@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Read-only Premier League 2026/27 family predictions game.">
+  <title>Family Premier League Predictions 2026/27</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to the scores</a>
+<header>
+  <div class="wrap">
+    <h1>Family Premier League Predictions</h1>
+    <p class="subtitle">2026/27 season · Lowest score wins</p>
+    <div class="locked" role="status">🔒 Predictions are locked. Nobody viewing this website can change them.</div>
+    <nav aria-label="Page shortcuts">
+      <a href="#leaderboard">Family scores</a>
+      <a href="#league">League table</a>
+      <a href="#predictions">Predictions</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section id="leaderboard" aria-labelledby="leaderboard-title">
+    <h2 id="leaderboard-title">Family scores</h2>
+    <p class="help">The smaller the number, the better. Each team scores one point for every league place the prediction is out.</p>
+    <div id="leaderStatus" class="status-box">Loading the current scores…</div>
+    <div id="dataWarning" class="data-warning" role="alert"></div>
+    <div id="leaderboardRows" class="leaderboard" aria-live="polite">
+      <p class="loading">Loading…</p>
+    </div>
+  </section>
+
+  <section id="league" aria-labelledby="league-title">
+    <h2 id="league-title">Premier League table</h2>
+    <p class="help">This table refreshes automatically. On a phone, the most important columns are shown.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="num">Pos</th>
+            <th>Club</th>
+            <th class="num">P</th>
+            <th class="num optional-col">W</th>
+            <th class="num optional-col">D</th>
+            <th class="num optional-col">L</th>
+            <th class="num optional-col">GD</th>
+            <th class="num">Pts</th>
+          </tr>
+        </thead>
+        <tbody id="leagueBody">
+          <tr><td colspan="8" class="loading">Loading the league table…</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <a class="back-link" href="#top">Back to the top</a>
+  </section>
+
+  <section id="predictions" aria-labelledby="predictions-title">
+    <h2 id="predictions-title">Locked predictions</h2>
+    <p class="help">Tap a person's name to see their complete 1–20 prediction. These are the final entries taken from the completed spreadsheet.</p>
+    <div id="predictionCards"></div>
+    <p class="prediction-note">🔒 There are deliberately no edit or save controls on this website.</p>
+    <a class="back-link" href="#top">Back to the top</a>
+  </section>
+
+  <section aria-labelledby="rules-title">
+    <h2 id="rules-title">How the scoring works</h2>
+    <p>If somebody predicts Arsenal to finish 3rd and Arsenal are currently 1st, that team gives them 2 points. The differences for all 20 clubs are added together. <strong>The lowest total wins.</strong></p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Last standings update:</strong> <span id="updated">loading…</span></p>
+    <p class="small"><strong>Data:</strong> <span id="source">loading…</span></p>
+    <p class="small">Family predictions are fixed in the website files and cannot be changed by visitors.</p>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
