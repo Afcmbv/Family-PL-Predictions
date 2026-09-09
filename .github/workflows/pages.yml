@@ -36,7 +36,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+          name: family-premier-league-site
 
       - name: Publish website
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: family-premier-league-site
