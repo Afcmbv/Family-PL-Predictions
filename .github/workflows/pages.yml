@@ -14,17 +14,14 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Check out website
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Fetch latest Premier League table
         run: python update_standings.py
@@ -33,13 +30,24 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Upload website
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: .
-          name: family-premier-league-site
+          name: family-site-${{ github.run_id }}-${{ github.run_attempt }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Allow upload to settle
+        run: sleep 30
 
       - name: Publish website
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: family-premier-league-site
+          artifact_name: family-site-${{ github.run_id }}-${{ github.run_attempt }}
